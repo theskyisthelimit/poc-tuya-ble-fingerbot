@@ -2,6 +2,7 @@ import pygatt
 import hashlib
 from pyfingerbot import XRequest, Coder, TuyaDataPacket, BleReceiver, SecretKeyManager, FingerBot
 import time
+import sys
 from struct import unpack
 from Crypto.Cipher import AES
 from binascii import unhexlify, hexlify
@@ -14,3 +15,4 @@ DEV_ID = ''
 
 fingerbot = FingerBot(MAC, LOCAL_KEY, UUID, DEV_ID)
 fingerbot.connect()
+sys.exit()

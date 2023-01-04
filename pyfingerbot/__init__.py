@@ -279,7 +279,7 @@ class FingerBot:
         self.secret_key_manager = SecretKeyManager(self.login_key)
         self.ble_receiver = BleReceiver(self.secret_key_manager)
 
-        self.adapter = pygatt.GATTToolBackend(hci_device='hci1')
+        self.adapter = pygatt.GATTToolBackend(hci_device='hci0')
         self.reset_sn_ack()
 
     def connect(self):
@@ -315,11 +315,16 @@ class FingerBot:
             req = self.pair_request()
             self.send_request(req)
         elif ret.code == Coder.FUN_SENDER_PAIR:
-            while True:
+            limit = 0
+            while limit < 2:
                 print('Fingering...')
                 req = self.send_dps([])
                 self.send_request(req)
                 time.sleep(4)
+                print(limit)
+                limit = limit + 1
+            print("After while")
+            self.adapter.stop()
 
     def send_request(self, xrequest):
         packets = xrequest.pack()
