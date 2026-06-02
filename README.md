@@ -61,7 +61,38 @@ python finger_me.py
 
 ## Home Assistant
 
-Use the script as a short-lived `shell_command`. Home Assistant OS runs
+### HACS custom integration
+
+This repository is HACS-compatible as an integration. Add it in HACS as a
+custom repository:
+
+```text
+https://github.com/theskyisthelimit/poc-tuya-ble-fingerbot
+```
+
+Select category `Integration`, install it, restart Home Assistant, then add:
+
+```text
+Settings -> Devices & services -> Add integration -> Tuya BLE Fingerbot
+```
+
+For a `yiihr7zh` Fingerbot Plus, use:
+
+```text
+MAC address: <BLE MAC>
+Local key: <Tuya local key>
+UUID: <Tuya UUID>
+Device ID: <Tuya device ID>
+Product ID: yiihr7zh
+Profile: auto
+```
+
+This creates one `Press` button entity. Pressing it connects over BLE, sends the
+Tuya command, and disconnects again.
+
+### shell_command fallback
+
+You can also use the script as a short-lived `shell_command`. Home Assistant OS runs
 `shell_command` inside the `homeassistant` container with `/config` as working
 directory and stops commands after 60 seconds, so this script connects, presses,
 and exits.

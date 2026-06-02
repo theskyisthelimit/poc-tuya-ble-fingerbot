@@ -1,0 +1,39 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "This Fingerbot is already configured."
+    },
+    "error": {
+      "invalid_profile": "Selected profile does not match the provided product ID."
+    },
+    "step": {
+      "user": {
+        "title": "Tuya BLE Fingerbot",
+        "description": "Enter the Tuya BLE credentials extracted from Tuya/Smart Life. The Tuya cloud authorization keys are not needed here.",
+        "data": {
+          "name": "Name",
+          "mac": "MAC address",
+          "local_key": "Local key",
+          "uuid": "UUID",
+          "device_id": "Device ID",
+          "product_id": "Product ID",
+          "product_name": "Product name",
+          "profile": "Profile",
+          "include_motion": "Send position settings before pressing",
+          "timeout": "BLE timeout"
+        },
+        "data_description": {
+          "profile": "Use auto with a product ID when possible. Your yiihr7zh Fingerbot Plus maps to classic.",
+          "include_motion": "Disable this if pressing works only when the script sends the click datapoint."
+        }
+      }
+    }
+  },
+  "entity": {
+    "button": {
+      "press": {
+        "name": "Press"
+      }
+    }
+  }
+}
